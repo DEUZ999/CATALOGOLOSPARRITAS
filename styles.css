@@ -85,32 +85,28 @@ body {
 
 /*
  * Regla para celulares: 2 columnas
- * Esto se aplicará en pantallas de hasta 767px de ancho.
- * Es ideal para la mayoría de los smartphones en modo vertical.
+ * Esto se aplicará a pantallas con un ancho de 600px o menos.
+ * Este valor funciona para la gran mayoría de los celulares.
 */
-@media (max-width: 767px) {
+@media (max-width: 600px) {
     .productos-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /*
- * Regla para tablets: 3 columnas
- * Ahora este rango es más amplio (de 768px a 1400px) para incluir tu Huawei T10s
- * y otras tabletas de tamaño similar.
+ * Regla para tablets y escritorios: 3 o más columnas
+ * Esto se aplicará en pantallas de 601px en adelante.
+ * Incluye tu tablet, y automáticamente se adapta a cualquier pantalla más grande.
 */
-@media (min-width: 768px) and (max-width: 1200px) {
+@media (min-width: 601px) {
     .productos-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/*
- * Regla para escritorios y pantallas muy grandes:
- * Ahora a partir de 1401px se aplicará la configuración de auto-fill.
-*/
-@media (min-width: 1401px) {
-    .productos-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        /*
+         * 'repeat(auto-fill, minmax(250px, 1fr))' es la clave.
+         * Le dice al navegador que ponga 3 columnas, pero si no caben 3
+         * (por ejemplo, en un celular), pone 2, y si caben 4 o más, lo hace.
+         * En tu tablet de 1200px, cabrán 3 o 4 columnas perfectamente.
+         */
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
 }
