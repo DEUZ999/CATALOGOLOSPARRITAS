@@ -84,24 +84,23 @@ body {
 }
 
 /*
- * Regla para todos los dispositivos por defecto
- * Esta es la base para móviles, que se aplicará si no hay otra regla.
+ * Regla por defecto para celulares y cualquier pantalla pequeña
+ * Se asegura de que haya al menos dos columnas con un tamaño mínimo de 150px.
 */
 .productos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 1.5rem;
     margin-top: 1rem;
 }
 
 /*
- * Regla para tablets y escritorios
- * Esta regla se activará en pantallas con un ancho de 768px o más.
- * Esto asegura que tanto tu tablet en vertical como en horizontal,
- * y cualquier escritorio, muestren 3 o más columnas.
+ * Regla para tablets en modo vertical y horizontal, y escritorios.
+ * Se activará en pantallas con un ancho de 600px o más, garantizando
+ * que quepan al menos 3 columnas con un tamaño mínimo de 200px.
 */
-@media (min-width: 768px) {
+@media (min-width: 600px) {
     .productos-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 }
