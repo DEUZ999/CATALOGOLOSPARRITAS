@@ -99,7 +99,7 @@ body {
  * Ahora este rango es más amplio (de 768px a 1400px) para incluir tu Huawei T10s
  * y otras tabletas de tamaño similar.
 */
-@media (min-width: 768px) and (max-width: 1400px) {
+@media (min-width: 768px) and (max-width: 1200px) {
     .productos-grid {
         grid-template-columns: repeat(3, 1fr);
     }
