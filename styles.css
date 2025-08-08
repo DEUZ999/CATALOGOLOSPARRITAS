@@ -7,7 +7,7 @@ body {
 }
 
 .header {
-    background-color: #2199df; /* Un color de fondo similar al de la imagen */
+    background-color: #2199df; /* Color de fondo */
     color: white;
     text-align: center;
     padding: 10px;
@@ -39,14 +39,15 @@ body {
     font-weight: bold;
 }
 
+/* Productos grid: por defecto (móviles) → 2 columnas */
 .productos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 1.5rem;
     margin-top: 1rem;
 }
 
-/* Estilos para cada tarjeta de producto */
+/* Tarjetas de producto */
 .producto-card {
     background-color: white;
     border: 1px solid #ddd;
@@ -83,22 +84,7 @@ body {
     text-transform: uppercase;
 }
 
-/*
- * Regla por defecto para celulares y cualquier pantalla pequeña
- * Se asegura de que haya al menos dos columnas con un tamaño mínimo de 150px.
-*/
-.productos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-/*
- * Regla para tablets en modo vertical y horizontal, y escritorios.
- * Se activará en pantallas con un ancho de 600px o más, garantizando
- * que quepan al menos 3 columnas con un tamaño mínimo de 200px.
-*/
+/* Tablets y pantallas más grandes → mínimo 3 columnas */
 @media (min-width: 600px) {
     .productos-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
