@@ -1,4 +1,4 @@
-/* Estilos generales */
+/* Estilos generales de la página */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,7 +7,7 @@ body {
 }
 
 .header {
-    background-color: #2199df; /* Color de fondo */
+    background-color: #2199df;
     color: white;
     text-align: center;
     padding: 10px;
@@ -39,15 +39,33 @@ body {
     font-weight: bold;
 }
 
-/* Productos grid: por defecto (móviles) → 2 columnas */
+/* ---------------------------------------------------- */
+/*
+ * Lógica Mobile First:
+ * La regla por defecto es para móviles (2 columnas),
+ * y la media query la actualiza para tablets y escritorio (3 columnas).
+*/
 .productos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    /* Por defecto: 2 columnas en pantallas pequeñas */
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     margin-top: 1rem;
 }
 
-/* Tarjetas de producto */
+/*
+ * Regla para tablets y pantallas más grandes (ancho mínimo de 768px).
+ * Esto cubrirá tu Huawei T10s en modo vertical y horizontal.
+*/
+@media (min-width: 768px) {
+    .productos-grid {
+        /* Cambia a 3 columnas para tabletas y escritorio */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ---------------------------------------------------- */
+/* Estilos para cada tarjeta de producto */
 .producto-card {
     background-color: white;
     border: 1px solid #ddd;
@@ -82,11 +100,4 @@ body {
     font-size: 0.8rem;
     color: #555;
     text-transform: uppercase;
-}
-
-/* Tablets y pantallas más grandes → mínimo 3 columnas */
-@media (min-width: 600px) {
-    .productos-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
 }
