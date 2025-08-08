@@ -5,8 +5,8 @@ const urlsToCache = [
   '/CATALOGOLOSPARRITAS/styles.css',
   '/CATALOGOLOSPARRITAS/app.js',
   '/CATALOGOLOSPARRITAS/manifest.json',
-  '/CATALOGOLOSPARRITAS/img/192x192.png',
-  '/CATALOGOLOSPARRITAS/img/512x512.png'
+  '/CATALOGOLOSPARRITAS/img/1921192.png',
+  '/CATALOGOLOSPARRITAS/img/5120512.png'
 ];
 
 self.addEventListener('install', event => {
