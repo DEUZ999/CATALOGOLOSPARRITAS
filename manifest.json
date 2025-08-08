@@ -2,18 +2,18 @@
   "name": "Cacharreria Los Parritas",
   "short_name": "Los Parritas",
   "description": "El catálogo de productos de Cacharreria Los Parritas",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2199df",
   "icons": [
     {
-      "src": "img5120512.png",
+      "src": "img/192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "img/1921192.png",
+      "src": "img/512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
