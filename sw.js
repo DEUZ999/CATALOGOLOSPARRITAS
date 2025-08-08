@@ -1,12 +1,12 @@
 const CACHE_NAME = 'catalog-cache-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/app.js',
-  '/manifest.json',
-  '/1921192.png',
-  '/5120512.png'
+  '/CATALOGOLOSPARRITAS/',
+  '/CATALOGOLOSPARRITAS/index.html',
+  '/CATALOGOLOSPARRITAS/styles.css',
+  '/CATALOGOLOSPARRITAS/app.js',
+  '/CATALOGOLOSPARRITAS/manifest.json',
+  '/CATALOGOLOSPARRITAS/img/192x192.png',
+  '/CATALOGOLOSPARRITAS/img/512x512.png'
 ];
 
 self.addEventListener('install', event => {
