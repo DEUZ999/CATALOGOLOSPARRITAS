@@ -82,3 +82,47 @@ body {
     color: #555;
     text-transform: uppercase;
 }
+
+/*
+ * Reglas para pantallas de celular
+ * (Ancho máximo de 768px, que es un buen estándar para tabletas y móviles)
+*/
+@media (max-width: 768px) {
+    .productos-grid {
+        /*
+         * En pantallas pequeñas, mostramos 2 columnas.
+         * Cada columna ocupará la mitad del espacio disponible,
+         * y la repetición automática hará el resto.
+         */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*
+ * Reglas para pantallas de tablet
+ * (Ancho mínimo de 769px y máximo de 1024px, por ejemplo)
+*/
+@media (min-width: 769px) and (max-width: 1024px) {
+    .productos-grid {
+        /*
+         * En tabletas, mostramos 3 columnas.
+         * 'repeat(3, 1fr)' crea 3 columnas del mismo ancho.
+         */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/*
+ * Opcional: reglas para pantallas más grandes que tablet
+ * (Ancho mínimo de 1025px, lo que se considera un desktop)
+*/
+@media (min-width: 1025px) {
+    .productos-grid {
+        /*
+         * Esta regla mantiene tu configuración original para pantallas grandes,
+         * asegurando que no se rompa en desktops.
+         * 'auto-fill' permite que se creen tantas columnas como quepan.
+         */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
