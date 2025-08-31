@@ -18,36 +18,33 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-  // Estrategia: Cache, luego red. Siempre intenta la red para actualizaciones.
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Primero, si el archivo está en caché, lo servimos
-        if (response) {
+  // Estrategia de red, luego caché para el CSV y las imágenes
+  if (event.request.url.includes('pub?output=csv') || event.request.url.includes('/img/')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          // Si la red es exitosa, actualizamos el caché y devolvemos la respuesta
+          const responseClone = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseClone);
+          });
           return response;
-        }
-
-        // Luego, si no está en caché, intentamos la red
-        return fetch(event.request);
-      })
-      .catch(() => {
-        // Si la red falla, y no tenemos el archivo en caché,
-        // devolvemos una página sin conexión o un error
-        // Para este caso, no hacemos nada, simplemente fallamos
-      })
-  );
-
-  // Opcional: Revalidar y actualizar el caché en segundo plano
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return fetch(event.request).then(response => {
-        // Si la solicitud fue exitosa, actualizamos el caché
-        if (event.request.url.includes('productos.csv')) {
-          console.log('Service Worker: Actualizando la caché del CSV.');
-          return cache.put(event.request, response.clone());
-        }
-        return response;
-      });
-    })
-  );
+        })
+        .catch(() => {
+          // Si la red falla, devolvemos lo que tenemos en caché
+          return caches.match(event.request);
+        })
+    );
+  } else {
+    // Para los otros archivos (HTML, CSS, JS), usamos la estrategia de solo caché
+    event.respondWith(
+      caches.match(event.request)
+        .then(response => {
+          if (response) {
+            return response;
+          }
+          return fetch(event.request);
+        })
+    );
+  }
 });
