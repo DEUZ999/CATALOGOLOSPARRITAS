@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // REEMPLAZA ESTA URL con la que obtuviste de Google Sheets
-    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTu5-zivnn-dNKJRuS3E3J2FE43fETSXFUbfej726soomXHHbTiIMYKSQrW_rkKOjwrsXENJZEwBP7_/export?format=csv';
+    // La URL ahora apunta a tu proxy local
+    const csvUrl = 'proxy.php';
     const catalogoContainer = document.getElementById('catalogo-container');
 
     async function cargarCatalogo() {
         try {
-            // Añadir un timestamp para evitar la caché del navegador
-            const urlConTimestamp = `${csvUrl}?v=${new Date().getTime()}`;
-            const response = await fetch(urlConTimestamp);
+            // Ya no es necesario añadir el timestamp
+            const response = await fetch(csvUrl);
             const csvData = await response.text();
             const productos = parseCSV(csvData);
 
