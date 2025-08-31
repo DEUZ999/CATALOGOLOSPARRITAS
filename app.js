@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const csvUrl = 'productos.csv';
+    // REEMPLAZA ESTA URL con la que obtuviste de Google Sheets
+    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTu5-zivnn-dNKJRuS3E3J2FE43fETSXFUbfej726soomXHHbTiIMYKSQrW_rkKOjwrsXENJZEwBP7_/pub?output=csv'; 
     const catalogoContainer = document.getElementById('catalogo-container');
 
     async function cargarCatalogo() {
@@ -8,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const csvData = await response.text();
             const productos = parseCSV(csvData);
 
-            // Mostrar todos los productos que tengan url_imagen
+            // Mostrar solo los productos que tengan una URL de imagen
             const productosConImagen = productos.filter(producto => producto.url_imagen && producto.url_imagen.trim() !== '');
 
             // Ordenar por categoría
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Si no es una URL externa, la tratamos como imagen local
                 if (!/^https?:\/\//i.test(urlImagen)) {
-                    urlImagen = `${urlImagen}`;
+                    urlImagen = `img/${urlImagen}`;
                 }
 
                 productoCard.innerHTML = `
