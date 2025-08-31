@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // REEMPLAZA ESTA URL con la que obtuviste de Google Sheets
-    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTu5-zivnn-dNKJRuS3E3J2FE43fETSXFUbfej726soomXHHbTiIMYKSQrW_rkKOjwrsXENJZEwBP7_/pub?output=csv';
+    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTu5-zivnn-dNKJRuS3E3J2FE43fETSXFUbfej726soomXHHbTiIMYKSQrW_rkKOjwrsXENJZEwBP7_/export?format=csv';
     const catalogoContainer = document.getElementById('catalogo-container');
 
     async function cargarCatalogo() {
