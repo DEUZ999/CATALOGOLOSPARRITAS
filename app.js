@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function cargarCatalogo() {
         try {
-            const response = await fetch(csvUrl);
+            // Añadir un timestamp para evitar la caché del navegador
+            const urlConTimestamp = `${csvUrl}?v=${new Date().getTime()}`;
+            const response = await fetch(urlConTimestamp);
             const csvData = await response.text();
             const productos = parseCSV(csvData);
 
