@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // La URL ahora apunta a tu proxy local
-    const csvUrl = 'proxy.php';
+    // REEMPLAZA ESTA URL con la que obtuviste de Google Sheets
+    const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTu5-zivnn-dNKJRuS3E3J2FE43fETSXFUbfej726soomXHHbTiIMYKSQrW_rkKOjwrsXENJZEwBP7_/pub?output=csv'; 
     const catalogoContainer = document.getElementById('catalogo-container');
 
     async function cargarCatalogo() {
         try {
-            // Ya no es necesario añadir el timestamp
             const response = await fetch(csvUrl);
             const csvData = await response.text();
             const productos = parseCSV(csvData);
@@ -66,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let urlImagen = producto.url_imagen.trim();
 
-                // Si no es una URL externa, la tratamos como imagen local
                 if (!/^https?:\/\//i.test(urlImagen)) {
                     urlImagen = `img/${urlImagen}`;
                 }
