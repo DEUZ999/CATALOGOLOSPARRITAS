@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let urlImagen = producto.url_imagen.trim();
 
+                // Si no es una URL externa, la tratamos como imagen local
                 if (!/^https?:\/\//i.test(urlImagen)) {
                     urlImagen = `img/${urlImagen}`;
                 }
