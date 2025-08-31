@@ -18,7 +18,7 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-  // Estrategia de red, luego caché para el CSV y las imágenes
+  // Estrategia: Red, luego caché para el CSV y las imágenes
   if (event.request.url.includes('pub?output=csv') || event.request.url.includes('/img/')) {
     event.respondWith(
       fetch(event.request)
